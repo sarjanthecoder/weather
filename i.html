@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your WEB</title>
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+      <header id="header">
+        <h1 id="starttitle"> Find the weather</h1>
+        <nav class="navbar">
+            <a href="#home">home</a>
+            <a href ="#weather">Check Weather</a>
+            <a href="#Support">Contact</a>
+
+        </nav>
+
+    </header>
+  
+
+<section id="sec1">
+    <div id="logindiv">
+    <h1 id="loginh1" >Login</h1>
+<input class="login" placeholder="Enter Your Email" type="email" required><br>
+<input class="login" type="password" placeholder="password" required><br>
+<button id="login"onclick="checkauth()">Login</button><br>
+<a href="">create account</a>
+</section>
+    
+</div>
+#weather part left
+<section id="sec2" >
+
+    <div id="weather" >
+    <input type="text" id="winput" placeholder="Enter The city"required>
+    <button onclick="getweather()" id="getweather">get weather</button>
+
+</div>
+ <div id="weather-right" >
+    <h1>your result willl appear here</h1>
+   <img src="">
+   
+</div>
+</section>
+
+
+<section id="chat">
+    
+    <div id="chatcontainer">
+        <center><h1>Ask your doubts</h1></center>
+        <div id="client"></div>
+        <div id="ai"></div>
+<input type="text" id="inputchat"required>
+<button id="aibtn">Send</button>
+
+</div>
+</section>
+<footer>
+    <h1>Help and suppport</h1>
+    <nav>
+        <a hrf="#home">home</a>
+        <a href=""></a>
+         <a href=mailto:sarjan6325@gmail.com>connect</a>
+    </nav>
+</footer>
+<script>
+function getweather() {
+    let city = document.getElementById("winput").value.trim();
+
+    if (city === "") {
+        document.getElementById("weather-right").innerHTML =
+        "⚠️ Please enter a city name";
+        return;
+    }
+
+    let apiKey = "82252ca6a8339af2f43f79f1598d2193"; // put your real key here
+
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.cod === 200) {
+                document.getElementById("weather-right").innerHTML = `
+                    🌍 City: ${data.name}<br>
+                    🌡️ Temperature: ${data.main.temp} °C<br>
+                    ☁️ Weather: ${data.weather[0].description}
+                `;
+            } else {
+                document.getElementById("weather-right").innerHTML =
+                "❌ City not found";
+            }
+        })
+        .catch(error => {
+            document.getElementById("weather-right").innerHTML =
+            "⚠️ Error fetching data";
+            console.error(error);
+        });
+}
+</script>

@@ -1,0 +1,157 @@
+#starttitle{
+    color:rgb(255, 221, 0);
+    text-decoration:none;
+    text-decoration-color: black;
+    text-align: center;
+}
+#header{
+    height:80px;
+    width:100%;
+    background-color:rgba(237, 110, 237, 0.792);
+        justify-content: space-between; 
+    text-align: right;
+}
+.navbar a{
+
+    text-align: left; 
+    margin-right: 20px;
+
+}
+
+
+   #logindiv {
+    height: 200px;
+    background-color: rgb(152, 225, 246);
+    width: 350px;
+    border: 2px solid;
+    border-radius: 25px;
+    height: 350px;
+    margin-left: 600px;
+    margin-top: 100px; 
+    position:absolute; /* ← Add this line */
+}
+
+
+    
+
+.login{
+    padding-top:8px;
+    border-radius: 20px;
+    width:230px;
+    margin-top:35px;
+    margin-left:50px
+  
+}
+#logindiv h1{
+    margin-left:150px;
+}
+#login{
+    background-color:green;
+    border-radius:20px;
+    width:200px;
+    margin-top:35px;
+    margin-left:70px;
+    padding-top:8px;
+    color:white;
+}
+
+
+#weather {
+     height:200px;
+    background-color:rgb(152, 225, 246);
+width:350px;
+    border:2px solid;
+   border-radius:25px;
+   height:200px;
+  margin-left:100px;
+   position:absolute;
+   margin-top:250px;
+ 
+     
+}
+#weather-right{
+     height:200px;
+    background-color:rgb(152, 225, 246);
+width:400px;
+    border:2px solid;
+   border-radius:25px;
+   height:200px;
+   margin-left:1050px;
+    position:absolute;
+     margin-top:250px;
+
+   
+
+ 
+ 
+     
+}
+#winput{
+    padding-top:8px;
+    border:1px;
+    border-radius:20px;
+    margin-top:100px;
+    margin-left:100px;
+       position:absolute;
+}
+#getweather{
+    border:1px;
+    border-color:black;
+    border-radius:20px;
+    background-color:green;
+    border-color: black;
+    padding:10px;
+    height:35px;
+    color:white;
+    margin-top:35px;
+    margin-left:140px;
+}
+#sec2{
+    height:720px;    ;
+    width:100%;
+    background-color: blueviolet;
+}
+#sec1{
+    background-color:goldenrod;
+    height:720px;
+    width:100%;
+}
+#chat{
+    height:720px;
+    width:100%;
+    background-color:aquamarine
+}
+#chatcontainer{
+    height:500px;
+    width:800px;
+    border:1px solid;
+    border-color:black;
+    border-radius: 20px;
+     position:absolute;
+
+    margin-left:450px;
+    margin-top:150px;
+}
+#inputchat{
+    border:1px solid;
+    border-radius: 20px;
+    padding:15px;
+    width:600px;
+    margin-left:10px;
+
+
+
+}
+#aibtn{
+    border:2px solid;
+    border-radius:20px;
+    padding:10px;
+    width:100px;
+    margin-top:370px;
+
+}
+footer{
+    height:90px;
+    background-color:aqua;
+
+}
