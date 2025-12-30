@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your WEB</title>
+</head>
+<body>
+    <style>
+        #starttitle{
+    color:rgb(255, 221, 0);
+    text-decoration:none;
+    text-decoration-color: black;
+    text-align: center;
+}
+#header{
+    height:80px;
+    width:100%;
+    background-color:rgba(237, 110, 237, 0.792);
+        justify-content: space-between; 
+    text-align: right;
+}
+.navbar a{
+
+    text-align: left; 
+    margin-right: 20px;
+
+}
+
+
+   #logindiv {
+    height: 200px;
+    background-color: rgb(152, 225, 246);
+    width: 350px;
+    border: 2px solid;
+    border-radius: 25px;
+    height: 350px;
+    margin-left: 600px;
+    margin-top: 100px; 
+    position:absolute; /* ← Add this line */
+}
+
+
+    
+
+.login{
+    padding-top:8px;
+    border-radius: 20px;
+    width:230px;
+    margin-top:35px;
+    margin-left:50px
+  
+}
+#logindiv h1{
+    margin-left:150px;
+}
+#login{
+    background-color:green;
+    border-radius:20px;
+    width:200px;
+    margin-top:35px;
+    margin-left:70px;
+    padding-top:8px;
+    color:white;
+}
+
+
+#weather {
+     height:200px;
+    background-color:rgb(152, 225, 246);
+width:350px;
+    border:2px solid;
+   border-radius:25px;
+   height:200px;
+  margin-left:100px;
+   position:absolute;
+   margin-top:250px;
+ 
+     
+}
+#weather-right{
+     height:200px;
+    background-color:rgb(152, 225, 246);
+width:400px;
+    border:2px solid;
+   border-radius:25px;
+   height:200px;
+   margin-left:1050px;
+    position:absolute;
+     margin-top:250px;
+
+   
+
+ 
+ 
+     
+}
+#winput{
+    padding-top:8px;
+    border:1px;
+    border-radius:20px;
+    margin-top:100px;
+    margin-left:100px;
+        position:absolute;
+}
+#getweather{
+    border:1px;
+    border-color:black;
+    border-radius:20px;
+    background-color:green;
+    border-color: black;
+    padding:10px;
+    height:35px;
+    color:white;
+    margin-top:35px;
+    margin-left:140px;
+}
+#sec2{
+    height:720px;    ;
+    width:100%;
+    background-color: blueviolet;
+}
+#sec1{
+    background-color:goldenrod;
+    height:720px;
+    width:100%;
+}
+#chat{
+    height:720px;
+    width:100%;
+    background-color:aquamarine
+}
+#chatcontainer{
+    height:500px;
+    width:800px;
+    border:1px solid;
+    border-color:black;
+    border-radius: 20px;
+     position:absolute;
+
+    margin-left:450px;
+    margin-top:150px;
+    overflow-y: scroll; /* Added scroll for chat history */
+    padding: 10px;
+}
+#inputchat{
+    border:1px solid;
+    border-radius: 20px;
+    padding:15px;
+    width:600px;
+    margin-left:10px;
+    position: absolute;
+    bottom: 20px; /* Positioned at bottom */
+}
+#aibtn{
+    border:2px solid;
+    border-radius:20px;
+    padding:10px;
+    width:100px;
+    margin-top:370px;
+    position: absolute;
+    bottom: 25px;
+    right: 50px;
+}
+/* Simple styles for messages */
+.user-msg { color: blue; text-align: right; margin: 5px; }
+.ai-msg { color: black; text-align: left; margin: 5px; }
+
+footer{
+    height:90px;
+    background-color:aqua;
+
+}
+    </style>
+      <header id="headerr">
+        <h1 id="starttitle"> Find the weather</h1>
+        <nav class="navbar">
+            <a href="#home">home</a>
+            <a href ="#weather">Check Weather</a>
+            <a href="#Support">Contact</a>
+
+        </nav>
+
+    </header>
+  
+
+<section id="sec1">
+    <div id="logindiv">
+    <h1 id="loginh1" >Login</h1>
+<input type="email" id="email" name="email">
+<input type="password" id="password" name="password">
+
+<button id="login"onclick="checkauth()">Login</button><br>
+<a href="/register">create account</a>
+</section>
+    
+</div>
+<section id="sec2" >
+
+    <div id="weather" >
+    <input type="text" id="winput" placeholder="Enter The city"required>
+    <button  onclick="getweather()"id="getweather">get weather</button>
+
+</div>
+ <div id="weather-right" >
+    <h1>your result willl appear here</h1>
+   <img src="">
+   
+</div>
+</section>
+
+
+<section id="chat">
+    
+    <div id="chatcontainer">
+        <center><h1>Ask your doubts</h1></center>
+        <div id="client"></div>
+        <div id="ai"></div>
+        
+        <input type="text" id="inputchat" required placeholder="Ask AI something...">
+        <button id="aibtn" onclick="sendChat()">Send</button>
+
+</div>
+</section>
+<footer>
+    <h1>Help and suppport</h1>
+    <nav>
+        <a hrf="#home">home</a>
+        <a href=""></a>
+         <a href=mailto:sarjan6325@gmail.com>connect</a>
+    </nav>
+</footer>
+<script>
+    
+
+function checkauth(){
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    fetch("/login", {
+        method: "POST",
+        headers: {
+    "Content-Type": "application/json"},
+        body: JSON.stringify({ email: email, password: password })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === "success") {
+            alert("Login success");
+            document.getElementById("sec2").style.display = "block";
+        } else {
+            alert("Invalid credentials");
+        }
+    });
+}
+function getweather() {
+    var city = document.getElementById("winput").value;
+    var apiKey = "82252ca6a8339af2f43f79f1598d2193";
+
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            if (data.cod === 200) {
+                document.getElementById("weather-right").innerHTML =
+                `🌍 City: ${data.name}<br>
+                 🌡️ Temp: ${data.main.temp} °C<br>
+                 ☁️ Weather: ${data.weather[0].description}`;
+            } else {
+                document.getElementById("weather-right").innerHTML =
+                "❌ City not found";
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
+// --- NEW FUNCTION FOR GEMINI CHAT ---
+function sendChat() {
+    let inputField = document.getElementById("inputchat");
+    let message = inputField.value;
+    
+    if (message.trim() === "") return;
+
+    // Show user message instantly
+    let clientDiv = document.getElementById("client");
+    clientDiv.innerHTML += `<p class="user-msg"><b>You:</b> ${message}</p>`;
+    
+    // Clear input
+    inputField.value = "";
+
+    // Send to Flask Backend
+    fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: message })
+    })
+    .then(res => res.json())
+    .then(data => {
+        // Show AI response
+        let aiDiv = document.getElementById("ai");
+        // Using innerHTML allows simple formatting if Gemini sends bolding
+        aiDiv.innerHTML += `<p class="ai-msg"><b>Gemini:</b> ${data.reply}</p>`; 
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+}
+</script>
+
+
+</body>
+</html>
